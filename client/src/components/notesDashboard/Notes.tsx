@@ -5,6 +5,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RootState } from '../../store';
 import { BasicNotes } from '../state/notesState';
 import { setNotes } from '../state/noteActions';
+import { format } from "date-fns";
 
 export interface NotesProps extends StateProps {}
 
@@ -16,7 +17,20 @@ export const Notes = (props: NotesProps) => {
             .then((data) => {
                 props.setNotes(data)
             });
-    },);
+    }, []);
+
+    const lastSixMonths = new Date();
+    lastSixMonths.setMonth(lastSixMonths.getMonth() - 6)
+    
+    let lastSixMonthNotes = props.notes.filter(({createdAt}) => (new Date(createdAt)) > lastSixMonths)
+
+    /*let defaultView = (isDefault: Boolean)  => {
+        const lastSixMonths = new Date();
+        lastSixMonths.setMonth(lastSixMonths.getMonth() - 6)
+        
+        let lastSixMonthNotes = props.notes.filter(({createdAt}) => (new Date(createdAt)) > lastSixMonths)
+        setDefaultDatesLastSixMonths(lastSixMonthNotes);
+    }*/
 
     return( 
         <div>
@@ -29,11 +43,11 @@ export const Notes = (props: NotesProps) => {
             </h2>
 
             <Item.Group divided>
-                {props.notes.map((note) => (
+                {lastSixMonthNotes.map((note) => (
                     <Item>
                     <Icon size="large" name="sticky note" />
                     <Item.Content key={note.id}>
-                        <Item.Header> Created at: {note.createdAt}</Item.Header>
+                        <Item.Header> Created at: {format(new Date(note.createdAt), "dd-MM-yyyy HH:mm")}</Item.Header>
                         <Item.Meta><span>Created by: {note.user}</span></Item.Meta>
                         <Item.Description>{note.note}</Item.Description>
                     </Item.Content>
