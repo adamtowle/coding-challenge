@@ -1,0 +1,54 @@
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    background: #eee !important;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .constrain {
+    padding: 0 5%;
+  }
+  
+  .ui.header.notesHeader {
+    background-color: #33FFBD;
+    height: 80px;
+    margin: 0;
+  
+    img {
+      margin-top: 30px;
+    }
+  }
+  
+  .notesFooter {
+    .segment {
+      height: 80px;
+      background-color: #33FFBD !important;
+    }
+  }
+  
+
+  .bannerContainer {
+    overflow: hidden;
+    background-color: #33FFBD;
+  }
+  
+  .bannerImage {
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    height: 150px;
+  }
+
+  .mainContainer {
+    min-height: 60vh;
+  }
+  
+  .ui.modal > .content {
+    background-color: #eee !important;
+  }

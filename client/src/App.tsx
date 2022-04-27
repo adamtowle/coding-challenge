@@ -1,26 +1,39 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Header, Container, Divider } from "semantic-ui-react";
+import { Notes } from "./components/notesDashboard/Notes";
+import "./scss/globalBundle.scss";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Header className="notesHeader">
+        <Container inverted>
+            <img
+                className="ui middle aligned left floated image"
+                src="/notes_logo.png"
+                alt="LOGO"
+                width="100"
+            />
+        </Container>
+    </Header>
+    <>
+    <div className="bannerContainer">
+        <div className="bannerImage" style={{backgroundImage: "url(/notes.jpg)"}}></div>
     </div>
+
+    <Container className="mainContainer">
+    <Notes />
+    </Container>
+    </>
+
+    <Divider/>
+    <footer className="notesFooter">
+        <div className="ui basic inverted segment">
+            <div className="ui container">
+                Notes
+            </div>
+        </div>
+    </footer>
+</>
   );
 }
-
-export default App;

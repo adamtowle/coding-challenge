@@ -42,6 +42,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/api/notes", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   if (!validateQuery(req.query)) {
     res.status(400).json(validateQuery.errors);
     return;
