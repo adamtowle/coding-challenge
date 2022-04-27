@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, Container, Divider } from "semantic-ui-react";
-import { Notes } from "./components/notesDashboard/Notes";
+import Notes  from "./components/notesDashboard/Notes";
 import "./scss/globalBundle.scss";
 
 export const App = () => {
@@ -22,7 +22,7 @@ export const App = () => {
     </div>
 
     <Container className="mainContainer">
-    <Notes />
+    <Notes/>
     </Container>
     </>
 
