@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import axios from "axios";
-import { Divider, Item, Icon } from "semantic-ui-react";
+import { Divider, Label, Checkbox } from "semantic-ui-react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from '../../store';
 import { BasicNotes } from '../state/notesState';
-import { setNotes } from '../state/noteActions';
-import { format } from "date-fns";
+import { setNotes, setIsAll } from '../state/noteActions';
+import NoteItems  from "./NoteItems";
 
 export interface NotesProps extends StateProps {}
 
@@ -17,21 +17,18 @@ export const Notes = (props: NotesProps) => {
             .then((data) => {
                 props.setNotes(data)
             });
+            //eslint-disable-next-line
     }, []);
 
-    const lastSixMonths = new Date();
-    lastSixMonths.setMonth(lastSixMonths.getMonth() - 6)
-    
-    let lastSixMonthNotes = props.notes.filter(({createdAt}) => (new Date(createdAt)) > lastSixMonths)
-
-    /*let defaultView = (isDefault: Boolean)  => {
-        const lastSixMonths = new Date();
-        lastSixMonths.setMonth(lastSixMonths.getMonth() - 6)
-        
-        let lastSixMonthNotes = props.notes.filter(({createdAt}) => (new Date(createdAt)) > lastSixMonths)
-        setDefaultDatesLastSixMonths(lastSixMonthNotes);
-    }*/
-
+    const onHandleToggleOn = (evt: ChangeEvent<EventTarget>, data: any) => {
+        let on = data.checked;
+        if(on) {
+            props.setIsAll(true);
+        } else {
+            props.setIsAll(false);
+        }
+    }
+ 
     return( 
         <div>
             <h2 className="ui header">
@@ -39,29 +36,24 @@ export const Notes = (props: NotesProps) => {
                 <i className="book icon"></i>
                 <div className="content">
                     Your notes:
+                    <div>{!props.isAll ? <Label color="teal" tag> Notes from last 6 months</Label> : <Label color="blue" tag> All notes </Label>}</div>
+                    <div>
+                        <Checkbox onClick={(evt, data) => onHandleToggleOn(evt, data)} toggle/>
+                    </div>
                 </div>
             </h2>
 
-            <Item.Group divided>
-                {lastSixMonthNotes.map((note) => (
-                    <Item>
-                    <Icon size="large" name="sticky note" />
-                    <Item.Content key={note.id}>
-                        <Item.Header> Created at: {format(new Date(note.createdAt), "dd-MM-yyyy HH:mm")}</Item.Header>
-                        <Item.Meta><span>Created by: {note.user}</span></Item.Meta>
-                        <Item.Description>{note.note}</Item.Description>
-                    </Item.Content>
-                </Item>
-                ))}
-            </Item.Group>
+            <NoteItems />
+            
         </div>
     )
 }
 
 const mapState = (state: RootState) => ({
-    notes: state.notesReducer.notes
+    isAll: state.notesReducer.isAll
 });
 const mapDispatch = {
+    setIsAll : (on: Boolean) => setIsAll(on),
     setNotes: (notes: BasicNotes[]) => setNotes(notes)
 }
 
