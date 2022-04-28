@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useFormik } from "formik";
+import axios from "axios";
 import { Modal, Button } from "semantic-ui-react";
 import { NotesModalContent } from "./NotesModalContent";
 import * as Yup from "yup";
@@ -10,7 +11,6 @@ export const AddNotesModal = ({
     trigger: React.ReactNode
 }) => {
     const [modalOpen, setModalOpen] = useState(false);
-
     const onModalOpen = useCallback(() => {
         setModalOpen(true);
       }, []);
@@ -20,19 +20,33 @@ export const AddNotesModal = ({
       }, []);
       const closeModal = useCallback(() => setModalOpen(false), []);
 
+    const reload = () => {
+        window.location.reload();
+    }
+
     const formik = useFormik({
         // eslint-disable-next-line react-hooks/rules-of-hooks
         initialValues : {
             date: new Date(Date.now()),
-            name: "",
             note: ""
         },
         validationSchema: Yup.object({
-            name: Yup.string().required("Please enter a name"),
             note: Yup.string().required("Dont forget your note").test('len', 'Note cannot exceed 500 characters', (val) => val?.toString().length! <= 500)
         }),
         onSubmit: async (values) => {
-            console.log("submit")
+                await axios.post('http://localhost:8080/api/notes', {
+                    date: values.date, 
+                    note:values.note
+                },)
+                .then((response) => {
+                    console.log(response);
+                    closeModal();
+                    alert('note submitted');
+                    reload();
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     })
     

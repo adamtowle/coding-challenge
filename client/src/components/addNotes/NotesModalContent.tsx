@@ -6,7 +6,6 @@ const appliedFormikCall = () =>
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useFormik<{
     date: Date;
-    name: string;
     note: string;
   }>(undefined as any);
 
@@ -43,19 +42,6 @@ export const NotesModalContent = ({
                         value={format(formik.values.date, "dd-MM-yyyy HH:mm aaaaaa")}
                         width={16}
                         disabled
-                    >
-                    </Form.Input>
-                </Form.Field>
-                <Form.Field>
-                    <label>Name</label>
-                    <Form.Input
-                        name="name"
-                        placeholder="Name"
-                        width={16}
-                        onChange={formik.handleChange}
-                        value={formik.values.name}
-                        error={formik.touched.name && formik.errors.name}
-                        onBlur={formik.handleBlur}
                     >
                     </Form.Input>
                 </Form.Field>

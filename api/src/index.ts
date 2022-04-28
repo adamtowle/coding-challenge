@@ -2,6 +2,7 @@ import express from "express";
 import Ajv, { JSONSchemaType } from "ajv";
 import addFormats from "ajv-formats";
 import createStore from "./store";
+import cors from "cors";
 
 const ajv = new Ajv();
 addFormats(ajv);
@@ -40,6 +41,7 @@ const store = createStore();
 const app = express();
 
 app.use(express.json());
+app.use(cors({origin: "*", allowedHeaders: ['Content-Type']}));
 
 app.get("/api/notes", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -53,6 +55,7 @@ app.get("/api/notes", (req, res) => {
 });
 
 app.post("/api/notes", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   if (!validateNote(req.body)) {
     res.status(400).json(validateNote.errors);
     return;

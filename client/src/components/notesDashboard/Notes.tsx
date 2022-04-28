@@ -10,16 +10,17 @@ import NoteItems  from "./NoteItems";
 
 export interface NotesProps extends StateProps {}
 
-export const Notes = (props: NotesProps) => {
+export const Notes = (props : NotesProps) => {
 
     useEffect(() => {
-            axios.get('http://localhost:8080/api/notes')
-            .then(response => response.data)
-            .then((data) => {
-                props.setNotes(data)
-            });
-            //eslint-disable-next-line
+        axios.get('http://localhost:8080/api/notes')
+        .then(response => response.data)
+        .then((data) => {
+            props.setNotes(data)
+        });
+        //eslint-disable-next-line
     }, []);
+
 
     const onHandleToggleOn = (evt: ChangeEvent<EventTarget>, data: any) => {
         let on = data.checked;
@@ -63,15 +64,14 @@ export const Notes = (props: NotesProps) => {
                 </Grid.Row>
             </Grid>
 
-
             <NoteItems />
-            
         </div>
     )
 }
 
 const mapState = (state: RootState) => ({
-    isAll: state.notesReducer.isAll
+    isAll: state.notesReducer.isAll,
+    notes: state.notesReducer.notes
 });
 const mapDispatch = {
     setIsAll : (on: Boolean) => setIsAll(on),
