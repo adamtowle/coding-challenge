@@ -44,23 +44,23 @@ export const Notes = (props: NotesProps) => {
             </h2>
            
             <Grid columns={2}>
-            <Grid.Row>
-                <GridColumn><div>{!props.isAll ? <Label color="teal" tag> Notes from last 6 months</Label> : <Label color="blue" tag> All notes </Label>}</div></GridColumn>
-                <Grid.Column>
-                    <AddNotesModal 
-                    trigger={
-                    <Button 
-                        name="Add Note"
-                        content="Add Note"
-                        icon="pencil"
-                        labelPosition="left"
-                        color="teal"
-                        floated="right"
-                    />
-                    }
-                    />
-                </Grid.Column>
-            </Grid.Row>
+                <Grid.Row>
+                    <GridColumn><div>{!props.isAll ? <Label color="teal" tag> Notes from last 6 months</Label> : <Label color="blue" tag> All notes </Label>}</div></GridColumn>
+                    <Grid.Column>
+                        <AddNotesModal 
+                        trigger={
+                        <Button 
+                            name="Create Note"
+                            content="Create a note"
+                            icon="pencil"
+                            labelPosition="left"
+                            color="teal"
+                            floated="right"
+                        />
+                        }
+                        />
+                    </Grid.Column>
+                </Grid.Row>
             </Grid>
 
 
