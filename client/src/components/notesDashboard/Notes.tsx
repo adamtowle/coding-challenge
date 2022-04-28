@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useEffect } from "react";
 import axios from "axios";
-import { Divider, Label, Checkbox } from "semantic-ui-react";
+import { Divider, Label, Checkbox, Grid, Button, GridColumn } from "semantic-ui-react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from '../../store';
 import { BasicNotes } from '../state/notesState';
 import { setNotes, setIsAll } from '../state/noteActions';
+import { AddNotesModal } from "../addNotes/AddNotesModal";
 import NoteItems  from "./NoteItems";
 
 export interface NotesProps extends StateProps {}
@@ -36,12 +37,32 @@ export const Notes = (props: NotesProps) => {
                 <i className="book icon"></i>
                 <div className="content">
                     Your notes:
-                    <div>{!props.isAll ? <Label color="teal" tag> Notes from last 6 months</Label> : <Label color="blue" tag> All notes </Label>}</div>
                     <div>
-                        <Checkbox onClick={(evt, data) => onHandleToggleOn(evt, data)} toggle/>
+                        <Checkbox label="Toggle to show all notes" onClick={(evt, data) => onHandleToggleOn(evt, data)} toggle/>
                     </div>
                 </div>
             </h2>
+           
+            <Grid columns={2}>
+            <Grid.Row>
+                <GridColumn><div>{!props.isAll ? <Label color="teal" tag> Notes from last 6 months</Label> : <Label color="blue" tag> All notes </Label>}</div></GridColumn>
+                <Grid.Column>
+                    <AddNotesModal 
+                    trigger={
+                    <Button 
+                        name="Add Note"
+                        content="Add Note"
+                        icon="pencil"
+                        labelPosition="left"
+                        color="teal"
+                        floated="right"
+                    />
+                    }
+                    />
+                </Grid.Column>
+            </Grid.Row>
+            </Grid>
+
 
             <NoteItems />
             
