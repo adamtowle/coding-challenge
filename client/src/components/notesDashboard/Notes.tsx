@@ -46,7 +46,7 @@ export const Notes = (props : NotesProps) => {
            
             <Grid columns={2}>
                 <Grid.Row>
-                    <GridColumn><div>{!props.isAll ? <Label color="teal" tag> Notes from last 6 months</Label> : <Label color="blue" tag> All notes </Label>}</div></GridColumn>
+                    <GridColumn><div>{!props.isAll ? <Label name="sixmonthlabel" color="teal" tag> Notes from last 6 months</Label> : <Label name="allmonthlabel" color="blue" tag> All notes </Label>}</div></GridColumn>
                     <Grid.Column>
                         <AddNotesModal 
                         trigger={
@@ -63,7 +63,6 @@ export const Notes = (props : NotesProps) => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-
             <NoteItems />
         </div>
     )
