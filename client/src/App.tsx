@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useEffect } from "react";
-import Note from "./components/note";
+import Note from "./components/Note/note";
 
 function App() {
   useEffect(() => {
