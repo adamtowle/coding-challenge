@@ -30,7 +30,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Note />
+      <Note dateTime={'2023-09-24T07:29:40.382Z'} user={'Orland Doyle'} content={'Magnam expedita iste enim cum quia qui dolores vel ut ea debitis sed ad sed qui et sint odio saepe est maxime aliquid saepe quisquam cumque architecto aut possimus deserunt.'}/>
     </div>
   );
 }
