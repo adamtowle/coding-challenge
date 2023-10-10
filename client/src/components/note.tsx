@@ -1,18 +1,15 @@
 import React from 'react';
+import styles from './note.module.scss';
 
 const Note = () => {
   return (
-    <div
-      className="">
+    <div>
       <div>
-        <h4 className="">13 things to work on</h4>
-        <p className="">Our interior design experts work with you to create the space that you have
-          been dreaming about.</p>
+        <div className={styles.noteDateTime}>2023-09-24T07:29:40.382Z</div>
+        <p className={styles.noteUser}>Orland Doyle</p>
       </div>
       <div>
-        <div className="flex items-center justify-between text-gray-800">
-          <p className="text-sm">March 28, 2020</p>
-        </div>
+        <p className={styles.noteContent}>Magnam expedita iste enim cum quia qui dolores vel ut ea debitis sed ad sed qui et sint odio saepe est maxime aliquid saepe quisquam cumque architecto aut possimus deserunt.</p>
       </div>
     </div>
   )
