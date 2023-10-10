@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useEffect } from "react";
+import Note from "./components/note";
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
   };
   return (
     <div className="App">
+      <Note />
     </div>
   );
 }
