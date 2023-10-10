@@ -7,6 +7,15 @@ TESTS: Enough to showcase what good testing looks like to you
 DOCS: Nice to have, not mandatory
 ```
 
+## Error when starting the React app: 
+```
+Error: error:0308010C:digital envelope routines::unsupported
+```
+### In Bash, run this first: 
+```
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
 ## Overview
 
 This challenge is to implement a small set of UI functionality providing the ability to create and interact with a list of notes.
