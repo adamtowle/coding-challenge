@@ -31,6 +31,13 @@ You do not need to build a full application shell, we're more interested in the 
 
 ## Getting Started
 
+### Prerequisites
+
+```
+node@16
+npm@8
+```
+
 ### Running the Backend
 
 From the root directory:
