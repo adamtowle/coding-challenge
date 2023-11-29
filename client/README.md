@@ -63,4 +63,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 8. I've co-located the tests with their features. There aren't many, but a basic idea of what we could test for.
 9. I've re-exported the components as it's a pet peeve of mine when having to import from different locations, whereas with re-exporting we can access them from a central entry point (single source of truth etc).
 It also helps create a consistent API if we were to build a library, and simplifies imports.
+10. That's it!
  
