@@ -1,26 +1,26 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import MainContainer from "./notes/MainContainer";
+import createClient from "./util/QueryClient";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Route, Routes } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+
+// Create the query client for data fetching/mutations
+createClient();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<QueryClientProvider client={createClient()}>
+				<ChakraProvider>
+					<Routes>
+						<Route path="/" element={<MainContainer />}  />
+					</Routes>
+				</ChakraProvider>
+			</QueryClientProvider>
+		</BrowserRouter>
+	);
 }
 
 export default App;
