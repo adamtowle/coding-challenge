@@ -48,7 +48,6 @@ app.get("/api/notes", (req, res) => {
   }
 
   const { from } = req.query;
-  console.log("req query: ", req.query)
   res.json(store.getNotes(from ? new Date(String(from)) : undefined));
 });
 

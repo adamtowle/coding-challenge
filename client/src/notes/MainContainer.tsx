@@ -1,11 +1,10 @@
 import { Container, Flex, Heading, Spinner } from "@chakra-ui/react";
 import { useNotes } from "./hooks/useNotes";
-import CustomError from "../components/CustomError";
-import Note from "../components/Note";
 import NotesActions from "./components/NotesActions";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { format, subMonths } from "date-fns";
+import { CustomError, Note } from "./components";
 
 const MainContainer = () => {
     const { notes, isLoading, error } = useNotes() ?? [];

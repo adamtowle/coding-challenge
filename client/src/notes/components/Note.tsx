@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from "@chakra-ui/react"
-import { INote } from "../notes/types/note"
+import { INote } from "../types/note"
 import { format } from "date-fns";
 import { memo } from "react";
 
@@ -20,4 +20,4 @@ const Note = memo((note: INote) => {
     );
 });
 
-export default Note;
+export { Note }

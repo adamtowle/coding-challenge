@@ -60,4 +60,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 5. I've kept the styling basic. In reality I would have wireframes/mockups (Figma or Adobe XD) to follow.
 6. In terms of styling, I have kept it basic. I don't know how LDMS style their components, but in practice these guidelines would be adhered to (design system, storybook etc). I have added the styles to the components, but alternative approaches might be Styled Components, CSS Modules etc.
 7. The Container component in Chakra UI is fairly responsive out-of-the-box. For finer level control, I would use media breakpoints (sm, md, lg, xl etc) to control what users' see at different viewports.
+8. I've co-located the tests with their features. There aren't many, but a basic idea of what we could test for.
  

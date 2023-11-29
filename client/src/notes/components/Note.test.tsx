@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Note from './Note'; // Adjust the import path as needed
-import { INote } from '../notes/types/note';
+import { INote } from '../types/note';
+import { Note } from './Note';
 
 describe('Note component', () => {
     const mockNoteOne: INote = {

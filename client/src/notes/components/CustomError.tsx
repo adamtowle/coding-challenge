@@ -8,4 +8,4 @@ const CustomError = ({ value }: IErrorProps) => {
     return <Text color="red.300">{value}</Text>
 }
 
-export default CustomError;
+export { CustomError };
